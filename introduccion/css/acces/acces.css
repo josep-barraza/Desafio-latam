@@ -1,0 +1,56 @@
+body{margin: 0;
+    padding: 0;
+    background-color: rgb(215, 248, 237);
+
+    
+h1{ 
+    padding: 0%;
+    margin: 0%;
+    font-size: 120px;
+    color: aqua;
+    background-image: url(../imagenes/pie-pagina.jpg);
+   
+}
+}
+.contenedor{
+display: flex;
+align-items: center;
+
+
+}
+
+.imagen{
+    width: 350px;
+    height: 250px;
+border-radius: 50px;
+
+
+}
+
+
+.nombre-producto{
+    margin-left: 20px;
+    font: size 20%; ;
+    color: black;
+    
+
+
+}
+
+.precio-producto{
+    margin-left: 20px;
+    font-size: 20px ;
+    color: rgb(14, 141, 141);
+
+}
+footer{
+    bottom: c;
+    background-color: chocolate;
+    border: 20px solid;
+    padding-left: 1150px;
+    
+
+    
+}
+
+

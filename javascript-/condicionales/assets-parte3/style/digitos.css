@@ -1,0 +1,67 @@
+
+.main{
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+padding: 10px;
+margin: 10px;
+border:solid 2px rgb(112, 112, 112);
+background-color: rgb(152, 206, 238);
+}
+
+
+
+#primerDigito{
+    padding: 10px;
+margin: 10px;
+
+
+}
+#segundoDigito{
+    padding: 10px;
+    margin: 10px;
+    
+
+}
+
+#tercerDigito{
+    padding: 10px;
+    margin: 10px;
+    
+
+}
+
+
+h3{
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin: 10px;
+
+}
+section{
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    padding: 20px;
+    margin: 20px;
+}
+
+
+button{
+    justify-content: center;
+    align-items: center;
+    padding: 5px;
+    margin: 5px;
+    width: 200px;
+   
+    background-color: green;
+}
+h4{
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin: 10px;
+
+}
