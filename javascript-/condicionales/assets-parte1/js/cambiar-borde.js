@@ -5,12 +5,12 @@
     /* haciendo click a la imagen */
 
    borde.addEventListener("click", () => {
-      // Verifica si la imagen ya tiene borde
-      if (borde.style.border === "2px solid black") {
+      
+      if (borde.style.border === "2px solid red") {
         borde.style.border = '';
         parrafo.innerHTML = "Sin bordes"; 
       } else {
-        borde.style.border = "2px solid black";
+        borde.style.border = "2px solid red";
         parrafo.innerHTML = "Con bordes" 
       }
     });
@@ -21,12 +21,12 @@ let button =document.querySelector("button")
 button.addEventListener("click",() =>{
 
     
-    if (borde.style.border === "2px solid black") {
+    if (borde.style.border === "2px solid red") {
         borde.style.border = ""; 
         parrafo.innerHTML = "Sin bordes"; 
     }   else{
-        borde.style.border = "2px solid black";
-        parrafo.innerHTML = "Con bordes" // Agregar borde
+        borde.style.border = "2px solid red";
+        parrafo.innerHTML = "Con bordes" 
     }
 })
 
