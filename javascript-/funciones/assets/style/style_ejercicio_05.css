@@ -1,0 +1,43 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+main{
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+
+}
+
+section{
+    display: flex;
+
+
+}
+
+
+
+#teclado {
+   
+    display: grid;
+    grid-template-columns: repeat(10, 40px);
+    gap: 10px;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .tecla {
+    
+    padding: 10px;
+    background-color: #ddd;
+    border: 1px solid #999;
+    
+  }
+ 
+  #pantalla {
+    width: 400px;
+    padding: 10px;
+    font-size: 1.2em;
+  } 
