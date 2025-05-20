@@ -16,6 +16,17 @@ con los colores morado, gris y café respectivamente.   */
 
 let cambioColor="";
 
+function nuevoDiv(color){
+
+  const divNuevo = document.createElement("div");
+  
+  divNuevo.className = "color-div";
+
+  divNuevo.style.backgroundColor = color;
+
+ document.body.appendChild(divNuevo)
+
+}   
 
 
 document.addEventListener('keydown', function (event) {
@@ -58,14 +69,4 @@ if (key === 'a' || key === "A") {
 
     })
 
-    function nuevoDiv(color){
-
-        const divNuevo = document.createElement("div");
-        
-        divNuevo.className = "color-div";
-    
-        divNuevo.style.backgroundColor = color;
-    
-       document.body.appendChild(divNuevo)
-    
-     }   
+  

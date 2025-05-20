@@ -1,0 +1,104 @@
+*{
+    padding: 0%;
+    margin: 0%;
+    
+    }
+    
+    .alquiler{
+    background-color: rgb(12, 20, 36);
+    
+    }
+img{
+    height: 200px;
+}
+
+.divArriendos{
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr;
+   justify-items: center;
+
+   .arriendo{
+background-color: rgb(7, 14, 27);
+    margin: 20px;
+    border :solid 2px;
+    border-color:  rgb(4, 7, 14);
+    color: white;
+     justify-items: center;
+    
+   img{
+
+   width: 100%;
+   border :solid 2px;
+   border-color: rgb(4, 7, 14);
+   
+   
+   }
+
+   h2{
+    padding: 8px;
+    border :solid 2px;
+   border-color: rgb(4, 7, 14);
+    font-size: small;
+   
+    height: 70px;
+    width: 100%;
+    }
+    p{
+
+    display: flex;
+    justify-content: center;
+    font-size: small;
+    padding: 2px;
+    
+    width: 80%;
+    
+
+    }
+
+   }
+}
+
+
+@media(max-width:576px ){
+
+
+.divArriendos{
+    
+display: grid;
+grid-template-columns: 1fr ;
+
+
+
+}
+
+
+
+}
+
+@media(min-width:576px ){
+
+
+.divArriendos{
+    
+display: grid;
+grid-template-columns: 1fr  1fr;
+
+
+
+}
+
+
+
+}
+@media(min-width:767px ){
+
+.divArriendos{
+    
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+
+
+}
+
+  
+}
