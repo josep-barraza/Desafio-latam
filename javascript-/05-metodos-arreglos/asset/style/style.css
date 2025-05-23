@@ -1,0 +1,87 @@
+*{padding: 0%;
+  margin: 0%;
+}
+h3{
+    color: rgb(54, 54, 54);
+}
+main{
+
+    
+
+    background-color: rgb(103, 196, 240);
+    align-items: center;
+    justify-items: center;
+    border:solid 0px 2px ;
+    border-color: blue;
+
+    padding: 1%;
+    margin: 10%;
+
+
+}
+
+.titulo{
+    color: rgb(65, 65, 65);
+width: 100%;
+margin: 1%;
+
+}
+
+.nuevaTarea{
+
+display: flex;
+width: 100%;
+justify-content: space-around;
+
+
+}
+button{
+    color: rgb(253, 253, 253);
+    background-color: rgb(80, 187, 80);
+    margin: 1%;
+    padding: 1%;
+}
+
+.logica{
+display: flex;
+justify-content: space-around;
+margin: 3%;
+width: 100%;
+
+
+}
+
+.listBtn{
+
+    background-color: rgb(26, 26, 26);
+    color: brown;
+}
+
+
+table
+
+.borrarTareas{
+
+    display: flex;
+    justify-content: center;
+    
+    flex-direction: column;
+    width: 40%;
+}
+
+.contadores{
+
+    width: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+}
+
+p{
+    font-size: xx-small;
+}
+td{
+
+    width: 300%;
+
+}
