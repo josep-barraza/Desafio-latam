@@ -1,0 +1,51 @@
+body{
+    
+    background-color: black;
+    justify-items: center;
+    align-items: center;
+    
+}
+
+#cuerpo{
+    width: 20%;
+    background-color: rgb(252, 252, 252);
+    justify-content: center;
+    align-items: center;
+    border: solid 2px;
+    border-radius: 10%;
+    border-color: rgb(255, 0, 0);
+
+    padding: 2%;
+    margin: 2%;
+
+}
+
+
+#main{
+
+
+    justify-items: center;
+     align-items: center;
+
+     margin: 2%;
+    padding: 1%
+
+
+
+
+}
+
+button{
+    background-color: brown;
+     margin: 1%;
+    padding: 1%
+
+}
+
+#canvas{
+
+    width: 30%;
+    height: 10%;
+   
+
+}
