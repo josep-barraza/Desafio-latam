@@ -1,0 +1,59 @@
+body{
+background-color: black;
+
+}
+
+.imagen{
+
+margin: 1%;  
+width: 90%;
+height: 400px;
+align-items: center;
+border-radius: 5%;
+
+
+}
+
+
+
+.card{
+
+background-color: black;
+  margin: 1%;
+  border:solid 2px;
+  border-color: red;
+ 
+}
+
+.tarjetas{
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+ 
+
+
+}
+
+
+.inicioCard{
+  display: flex;
+  justify-content: center;
+  background-color: red;
+  border-radius: 40%;
+  color: black;
+padding: 2%;
+margin: 1%;
+
+}
+
+.fin{
+  display: flex;
+  justify-content: center;
+  padding: 1%;
+  background-color: black;
+  color: white;
+;
+  
+}
