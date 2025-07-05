@@ -10,9 +10,9 @@ const Home = () => {
 
     <h1 className="inicioCard">Eligue tu Pizza !FAvorita¡</h1>
 
-    <div className="tarjetas">
+{/*     <div className="tarjetas">
       
-      <CardPizza
+    {   <CardPizza
         imagen="src/assets/img/pizza-napolitana-2.jpg"
         titulo="Pizza !Napolitana¡"
         ingredientes={"Tomate, Mozzarella fresca, Albahaca fresca, Aceite de oliva virgen extra"}
@@ -30,8 +30,8 @@ const Home = () => {
         ingredientes={"Salsa de tomate, Queso mozzarella rallado, Jamón cocido o en lonchas, Trozos de piña "}
         precio={"10.100"}
       />
-
-    </div>
+ }
+    </div> */}
 
     </>
 

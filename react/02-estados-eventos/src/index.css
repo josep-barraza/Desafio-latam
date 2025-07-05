@@ -14,10 +14,18 @@ border-radius: 5%;
 
 }
 
+.cardPizza{
+display: grid;
+grid-template-columns: auto auto auto;
+  
+}
 
 
 .card{
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
 background-color: black;
   margin: 1%;
   border:solid 2px;
