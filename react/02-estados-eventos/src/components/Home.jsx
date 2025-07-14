@@ -1,14 +1,50 @@
+import { useEffect, useState } from "react";
 import CardPizza from "./CardPizza";
 import Header from "./Header";
 
 const Home = () => {
+  const [pizzas, setPizzas] = useState([]);
 
-    return (
+  useEffect(() => {
+    fetch("http://localhost:5000/api/pizzas")
+      .then((res) => res.json())
+      .then((data) => setPizzas(data))
+      .catch((error) => console.error("Error al cargar las pizzas:", error));
+  }, []);
 
-    <>
-    <Header/>
+  return (
+    <div className="container">
+      <Header />
+      <h1 className="text-center my-4" style={{color:"white"}}>¡Elige tu Pizza Favorita!</h1>
 
-    <h1 className="inicioCard">Eligue tu Pizza !FAvorita¡</h1>
+      <div className="row">
+        {pizzas.map((pizza) => (
+          <div className="col-md-4 mb-4" key={pizza.id}>
+            <div className="card h-100 shadow">
+              <img
+                src={pizza.img}
+                className="card-img-top"
+                alt={pizza.name}
+                style={{ height: "200px", objectFit: "cover" }}
+              />
+              <div className="card-body">
+                <h5 className="card-title" style={{color:"white"}}>{pizza.name}</h5>
+                <p className="card-text" style={{color:"white"}}>
+                  <strong>Ingredientes:</strong><br />
+                  {pizza.ingredients.join(", ")}
+                </p>
+                <p className="card-text" style={{color:"white"}}>
+                  <strong>Precio:</strong> ${pizza.price}
+                </p>
+                <button className="btn btn-primary w-100">Añadir al carrito</button>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
 
 {/*     <div className="tarjetas">
       
@@ -33,11 +69,7 @@ const Home = () => {
  }
     </div> */}
 
-    </>
+   
 
-    
-
-)
-}
 
 export default Home;
