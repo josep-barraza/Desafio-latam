@@ -1,35 +1,32 @@
-
-import CardPizza from "./components/CardPizza"
-import Footer from "./components/Footer"
-import Home from "./components/Home"
-import Login from "./components/Login"
-import Navbar from "./components/Navbar"
-import Pizza from "./components/Pizza"
-import Register from "./components/Register"
-import Miles from "./components/Utils"
-import Cart from "./components/card"
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import Home from "./components/pages/Home";
+import Login from "./components/pages/Login";
+import Register from "./components/pages/Register";
+import Pizza from "./components/pages/Pizza";
+import Cart from "./components/pages/card";
+import Profile from "./components/Profile";
+import NotFound from "./components/NotFound";
 
 function App() {
-  
-
   return (
-    <>
+    <BrowserRouter>
+      <Navbar />
 
-    <Navbar
-    total={<Miles/>} 
-    
-    />
-   { <Home/> }
-    {/* {<CardPizza/>} */}
-    {/* {<Cart/>} */}
-     {/* <Register/>  */}
-    {/* <Login/> */}
-    {/* <Pizza/> */}
-    <Footer
-    fin={"@ 2025 - Pizzeria Mamma mia¡ - Todos los derechos reservados"}/>
-   
-    </>
-  )
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/pizza" element={<Pizza />} />
+        <Route path="/card" element={<Cart />} />
+        <Route path="/profile" element={<Profile email="usuario@ejemplo.com" onLogout={() => alert("Sesión cerrada")} />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+
+      <Footer fin="@ 2025 - Pizzería Mama Mia¡ - Todos los derechos reservados" />
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
