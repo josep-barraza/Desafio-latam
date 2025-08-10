@@ -1,39 +1,17 @@
-import { useState } from "react";
-import { pizzaCart as carritoInicial } from "../../js/pizzas";
+import { useContext } from "react";
+import { CartContext } from "../../context/CartContex";
 
 const Cart = () => {
-  const [carrito, setCarrito] = useState(
-    carritoInicial.map((pizza) => ({ ...pizza }))
-  );
-
-  const aumentar = (id) => {
-    const nuevoCarrito = carrito.map((pizza) =>
-      pizza.id === id ? { ...pizza, count: pizza.count + 1 } : pizza
-    );
-    setCarrito(nuevoCarrito);
-  };
-
-  const disminuir = (id) => {
-    const nuevoCarrito = carrito
-      .map((pizza) =>
-        pizza.id === id ? { ...pizza, count: pizza.count - 1 } : pizza
-      )
-      .filter((pizza) => pizza.count > 0);
-    setCarrito(nuevoCarrito);
-  };
-
-  const total = carrito.reduce(
-    (acumulado, pizza) => acumulado + pizza.price * pizza.count,
-    0
-  );
+  const { carts, increase, decrease, total } = useContext(CartContext);
 
   return (
     <div className="container">
       <h1 className="text-center mt-4" style={{ color: "white" }}>
         Carrito de Compras
       </h1>
+
       <div className="row">
-        {carrito.map((pizza) => (
+        {carts.map((pizza) => (
           <div className="col-md-4" key={pizza.id}>
             <div className="card mb-4 shadow-sm">
               <img src={pizza.img} className="card-img-top" alt={pizza.name} />
@@ -45,10 +23,10 @@ const Cart = () => {
                 <p style={{ color: "white" }}>Cantidad: {pizza.count}</p>
 
                 <div className="d-flex justify-content-between">
-                  <button className="btn btn-danger" onClick={() => disminuir(pizza.id)}>
+                  <button className="btn btn-danger" onClick={() => decrease(pizza.id)}>
                     -
                   </button>
-                  <button className="btn btn-success" onClick={() => aumentar(pizza.id)}>
+                  <button className="btn btn-success" onClick={() => increase(pizza.id)}>
                     +
                   </button>
                 </div>

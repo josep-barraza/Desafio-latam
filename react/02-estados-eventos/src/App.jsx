@@ -8,24 +8,35 @@ import Pizza from "./components/pages/Pizza";
 import Cart from "./components/pages/card";
 import Profile from "./components/Profile";
 import NotFound from "./components/NotFound";
+import CartProvider from "./context/CartContex";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Navbar />
+    <CartProvider>
+      <BrowserRouter>
+        <Navbar />
 
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/pizza" element={<Pizza />} />
-        <Route path="/card" element={<Cart />} />
-        <Route path="/profile" element={<Profile email="usuario@ejemplo.com" onLogout={() => alert("Sesión cerrada")} />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/pizza/:id" element={<Pizza />} />
+          <Route path="/card" element={<Cart />} />
+          <Route
+            path="/profile"
+            element={
+              <Profile
+                email="usuario@ejemplo.com"
+                onLogout={() => alert("Sesión cerrada")}
+              />
+            }
+          />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
 
-      <Footer fin="@ 2025 - Pizzería Mama Mia¡ - Todos los derechos reservados" />
-    </BrowserRouter>
+        <Footer fin="@ 2025 - Pizzería Mama Mia¡ - Todos los derechos reservados" />
+      </BrowserRouter>
+    </CartProvider>
   );
 }
 

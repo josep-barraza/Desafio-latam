@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import Miles from "./Utils";
+import { useContext } from "react";
+import { CartContext } from "../context/CartContex";
 
-const Navbar = ({ total }) => {
+const Navbar = () => {
+  const { total } = useContext(CartContext);
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow mb-4">
       <div className="container">
@@ -14,9 +18,6 @@ const Navbar = ({ total }) => {
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
         >
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -25,11 +26,10 @@ const Navbar = ({ total }) => {
           <div className="navbar-nav ms-auto d-flex align-items-center gap-3">
             <Link className="nav-link text-white" to="/">🍕 Home</Link>
             <Link className="nav-link text-white" to="/profile">🧔🏼‍♂️ Profile</Link>
-           
             <Link className="nav-link text-white" to="/login">🔓 Login</Link>
             <Link className="nav-link text-white" to="/register">🔐 Register</Link>
             <Link className="nav-link text-warning fw-bold" to="/card">
-               {Miles(total)}
+               🛒 {Miles(total)}
             </Link>
           </div>
         </div>
