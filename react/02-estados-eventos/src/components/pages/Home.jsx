@@ -1,6 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import Header from "../Header";
 import { CartContext } from "../../context/CartContex";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   const [pizzas, setPizzas] = useState([]);
@@ -39,6 +40,9 @@ const Home = () => {
                 <p style={{ color: "white" }}>
                   <strong>Precio:</strong> ${pizza.price}
                 </p>
+                 <Link to={`/pizza/${pizza.id}`} className="btn btn-danger mb-3">
+                                Ver más
+                              </Link>
                 <button
                   className="btn btn-primary w-100"
                   onClick={() => addToCart(pizza)}

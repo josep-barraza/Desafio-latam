@@ -2,9 +2,11 @@ import { Link } from "react-router-dom";
 import Miles from "./Utils";
 import { useContext } from "react";
 import { CartContext } from "../context/CartContex";
+import { TokenContext } from "../context/TokenContex";
 
 const Navbar = () => {
   const { total } = useContext(CartContext);
+  const { token, logout } = useContext(TokenContext);
 
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark shadow mb-4">
@@ -13,23 +15,24 @@ const Navbar = () => {
           🍕 Pizzería Mamaa Mia¡ 🍕
         </Link>
 
-        <button
-          className="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
-
         <div className="collapse navbar-collapse" id="navbarNav">
           <div className="navbar-nav ms-auto d-flex align-items-center gap-3">
             <Link className="nav-link text-white" to="/">🍕 Home</Link>
-            <Link className="nav-link text-white" to="/profile">🧔🏼‍♂️ Profile</Link>
-            <Link className="nav-link text-white" to="/login">🔓 Login</Link>
-            <Link className="nav-link text-white" to="/register">🔐 Register</Link>
+
+            {token ? (
+              <>
+                <Link className="nav-link text-white" to="/profile">🧔🏼‍♂️ Profile</Link>
+                <button onClick={logout} className="btn btn-outline-light btn-sm">Logout</button>
+              </>
+            ) : (
+              <>
+                <Link className="nav-link text-white" to="/login">🔓 Login</Link>
+                <Link className="nav-link text-white" to="/register">🔐 Register</Link>
+              </>
+            )}
+
             <Link className="nav-link text-warning fw-bold" to="/card">
-               🛒 {Miles(total)}
+              🛒 {Miles(total)}
             </Link>
           </div>
         </div>

@@ -1,20 +1,19 @@
-import { pizzas } from "../js/pizzas"
+import { Link } from "react-router-dom";
+import { pizzas } from "../js/pizzas";
+import { useContext } from "react";
+import { CartContext } from "../context/CartContex";
 
 const CardPizza = () => {
 
-
+  const { addToCart } = useContext(CartContext);
 
   return (
-    
-
-
-   
-  <ul className="cardPizza">
-  {pizzas.map((pizza) => (
-    <li key={pizza.id} className="card"  style={{ width: '18rem' }}>
-      <img src={pizza.img} className="card-img-top" alt={pizza.name} />
-      <div className="card-body">
-        <h5 className="card-title" style={{color:"white"}}>{pizza.name}</h5>
+    <ul className="cardPizza">
+      {pizzas.map((pizza) => (
+        <li key={pizza.id} className="card" style={{ width: "18rem" }}>
+          <img src={pizza.img} className="card-img-top" alt={pizza.name} />
+          <div className="card-body">
+           <h5 className="card-title" style={{color:"white"}}>{pizza.name}</h5>
         <p className="card-text" style={{color:"white"}}>
           <strong>Descripción:</strong> {pizza.desc}
         </p>
@@ -25,21 +24,27 @@ const CardPizza = () => {
           <strong>Precio: ${pizza.price}</strong>
         </p>
         </p>
-        <div>
-          <a href="#" className="btn btn-danger mb-3">Ver más</a>
-          <a href="#" className="btn btn-danger mb-3 ms-2">Añadir al carrito</a>
-        </div>
-      </div>
-    </li>
-  ))} 
- 
-
-</ul> 
-   
+            <div>
+              <Link to={`/pizza/${pizza.id}`} className="btn btn-danger mb-3">
+                Ver más
+              </Link>
+              <button 
+  className="btn btn-danger mb-3 ms-2"
+  onClick={() => addToCart(pizza)}
+>
+  Añadir al carrito
+</button>
+            </div>
+          </div>
+        </li>
+      ))}
+    </ul>
   );
 };
 
 export default CardPizza;
+
+ 
 
 
 
