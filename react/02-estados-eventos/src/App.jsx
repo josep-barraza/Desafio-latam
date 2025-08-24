@@ -9,25 +9,27 @@ import Cart from "./components/pages/card";
 import Profile from "./components/Profile";
 import NotFound from "./components/NotFound";
 import CartProvider from "./context/CartContex";
-import TokenProvider,{TokenContext} from "./context/TokenContex";
-import { useContext } from "react";
 
-// Ruta protegida: solo entra si token es true
+import { useContext } from "react";
+import UserProvider from "./context/UsertContex";
+import { UserContext } from "./context/UsertContex";
+
+// 🔒 Ruta protegida (requiere login)
 const ProtectedRoute = ({ children, redirectTo }) => {
-  const { token } = useContext(TokenContext);
+  const { token } = useContext(UserContext);
   return token ? children : <Navigate to={redirectTo} />;
 };
 
-// Redirección si ya está logueado
+// 🚪 Redirige si ya está logueado (ej: login / register)
 const AuthRedirect = ({ children }) => {
-  const { token } = useContext(TokenContext);
+  const { token } = useContext(UserContext);
   return token ? <Navigate to="/" /> : children;
 };
 
 function App() {
   return (
-    <TokenProvider>
-      <CartProvider>
+    <CartProvider>
+      <UserProvider>
         <BrowserRouter>
           <Navbar />
 
@@ -51,14 +53,14 @@ function App() {
               }
             />
             <Route path="/pizza/:id" element={<Pizza />} />
-            <Route path="/card" element={<Cart />} />
+            <Route path="/cart" element={<Cart />} />
 
-            {/* Ruta protegida */}
+            {/* Rutas privadas */}
             <Route
               path="/profile"
               element={
                 <ProtectedRoute redirectTo="/login">
-                  <Profile email="usuario@ejemplo.com" />
+                  <Profile />
                 </ProtectedRoute>
               }
             />
@@ -69,8 +71,8 @@ function App() {
 
           <Footer fin="@ 2025 - Pizzería Mama Mia¡ - Todos los derechos reservados" />
         </BrowserRouter>
-      </CartProvider>
-    </TokenProvider>
+      </UserProvider>
+    </CartProvider>
   );
 }
 

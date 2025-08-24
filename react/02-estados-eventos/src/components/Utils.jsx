@@ -3,7 +3,7 @@ const Miles = () => {
 
     return (
         <p>
-            🛒 total $ {total.toLocaleString('es-ES')}
+             total $ {total.toLocaleString('es-ES')}
         </p>
     );
 };

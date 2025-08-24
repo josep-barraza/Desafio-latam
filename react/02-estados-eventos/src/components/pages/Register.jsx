@@ -1,39 +1,32 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UserContext } from "../../context/UsertContex";
 
 const Register = () => {
+  const { register } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [contraseña, setContraseña] = useState("");
   const [verificarContraseña, setVerificarContraseña] = useState("");
   const [mensaje, setMensaje] = useState("");
-  const [tipoMensaje, setTipoMensaje] = useState(""); // success / error
+  const [tipoMensaje, setTipoMensaje] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    if (!email || !contraseña || !verificarContraseña) {
-      setMensaje("Todos los campos son obligatorios.");
-      setTipoMensaje("error");
-      return;
-    }
-
-    if (contraseña.length < 6) {
-      setMensaje("La contraseña debe tener al menos 6 caracteres.");
-      setTipoMensaje("error");
-      return;
-    }
-
     if (contraseña !== verificarContraseña) {
-      setMensaje("Las contraseñas no coinciden.");
+      setMensaje("Las contraseñas no coinciden");
       setTipoMensaje("error");
       return;
     }
 
-    setMensaje("Registro exitoso.");
-    setTipoMensaje("success");
+    const res = await register(email, contraseña);
 
-    setEmail("");
-    setContraseña("");
-    setVerificarContraseña("");
+    if (res.success) {
+      setMensaje("Registro exitoso 🎉");
+      setTipoMensaje("success");
+    } else {
+      setMensaje(res.message || "Error en el registro");
+      setTipoMensaje("error");
+    }
   };
 
   return (

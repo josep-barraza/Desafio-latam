@@ -1,37 +1,27 @@
-
-
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { UserContext } from "../../context/UsertContex";
 
 const Login = () => {
+  const { login } = useContext(UserContext);
   const [email, setEmail] = useState("");
   const [contraseña, setContraseña] = useState("");
-  
   const [mensaje, setMensaje] = useState("");
-  const [tipoMensaje, setTipoMensaje] = useState(""); // success / error
+  const [tipoMensaje, setTipoMensaje] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    const res = await login(email, contraseña);
 
-    if (!email || !contraseña) {
-      setMensaje("Todos los campos son obligatorios.");
+    if (res.success) {
+      setMensaje("Login exitoso ✅");
+      setTipoMensaje("success");
+    } else {
+      setMensaje(res.message || "Error en el login");
       setTipoMensaje("error");
-      return;
     }
-
-    if (contraseña.length < 6) {
-      setMensaje("La contraseña debe tener al menos 6 caracteres.");
-      setTipoMensaje("error");
-      return;
-    }
-
-  
-    setMensaje("Registro exitoso.");
-    setTipoMensaje("success");
-
-    setEmail("");
-    setContraseña("");
-   
   };
+   
+  
 
   return (
     <div className="container d-flex justify-content-center ">

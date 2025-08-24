@@ -1,10 +1,31 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CartContext } from "../../context/CartContex";
-import { TokenContext } from "../../context/TokenContex";
+import { UserContext } from "../../context/UsertContex";
 
 const Cart = () => {
   const { carts, increase, decrease, total } = useContext(CartContext);
-  const { token } = useContext(TokenContext);
+  const { token } = useContext(UserContext);
+  const [mensaje, setMensaje] = useState("");
+
+  const handleCheckout = async () => {
+    try {
+      const res = await fetch("http://localhost:5000/api/checkouts", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ cart: carts }),
+      });
+
+      if (!res.ok) throw new Error("Error en la compra");
+
+      setMensaje("Compra realizada con éxito 🎉");
+    } catch (error) {
+      setMensaje(error.message);
+    }
+  };
+
 
   return (
     <div className="container">
@@ -53,28 +74,20 @@ const Cart = () => {
         )}
       </div>
 
-      {carts.length > 0 && (
-        <>
-          <hr />
-          <div className="text-center">
-            <h3 style={{ color: "white" }}>Total: $ {total}</h3>
-            <button
-              className="btn btn-primary"
-              style={{ color: "white" }}
-              disabled={!token} // 🔒 Se desactiva si no hay token
-            >
-              Pagar
-            </button>
-            {!token && (
-              <p className="mt-2 text-warning">
-                Debes iniciar sesión para poder pagar.
-              </p>
-            )}
-          </div>
-        </>
+       {carts.length > 0 && (
+        <div className="text-center">
+          <h3 style={{ color: "white" }}>Total: $ {total}</h3>
+          <button
+            className="btn btn-primary"
+            onClick={handleCheckout}
+            disabled={!token}
+          >
+            Pagar
+          </button>
+          {mensaje && <p className="text-success mt-2">{mensaje}</p>}
+        </div>
       )}
     </div>
   );
 };
-
 export default Cart;
